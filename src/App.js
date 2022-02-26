@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// Import components
+import { Header, DogList } from "components";
+
+/**
+ * To whomever will read this code. I've tried to keep things simple and also learn
+ * something on the way. It's my first approach to Tailwind. The hype on it is huge and this
+ * was good oportunity to test it. Normally I work mostly with SCSS and styled-components so Tailwind
+ * feels weird ;) I've also rejected using some big UI libraries (Material or AntD).
+ * I'm confident that using useState is enought for app this size (no Redux or Context used).
+ *
+ * Happy code review ;)
+ */
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <DogList />
+    </>
   );
 }
 
