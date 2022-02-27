@@ -2,10 +2,11 @@ import React from "react";
 import useDogList from "./useDogList";
 
 // Import components
-import { Card, CardButtons, Modal, Container } from "components";
+import { Card, CardButtons, Modal, Container, Loader } from "components";
 
 // Import helpers
-import { CARDS } from "components/atoms/Container/helpers";
+import { CARDS, MAIN_LOADER } from "components/atoms/Container/helpers";
+import { MAIN_SIZE } from "components/atoms/Loader/helpers";
 
 function DogList() {
   const {
@@ -15,7 +16,15 @@ function DogList() {
     selectBreed,
     isOpen,
     toggle,
+    isLoading,
   } = useDogList();
+
+  if (isLoading)
+    return (
+      <Container modifier={MAIN_LOADER}>
+        <Loader modifier={MAIN_SIZE} />
+      </Container>
+    );
 
   return (
     <>

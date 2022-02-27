@@ -34,7 +34,7 @@ const useDogList = () => {
   // QUERY (API DATA)
   const fetchDogBreeds = () => dogAPI.get(GET_BREEDS_LIST_API);
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: QUERY_BREEDS_LIST,
     queryFn: fetchDogBreeds,
   });
@@ -51,6 +51,7 @@ const useDogList = () => {
     selectedBreed,
     selectBreed,
     selectedBreedName,
+    isLoading,
   };
 };
 
