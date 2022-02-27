@@ -8,18 +8,20 @@ import {
   QUERY_BREED_RANDOM_IMAGE,
 } from "services/api";
 
-const useModal = ({ selectedBreed }) => {
+const useModal = ({ selectedBreedType }) => {
   useEffect(() => {
     //clear breed image data
     return remove();
     // eslint-disable-next-line
   }, []);
 
-  const fetchBreedImage = () =>
-    dogAPI.get(GET_BREED_RANDOM_IMAGE_API.replace(":breed", selectedBreed));
+  const fetchBreedImage = () => {
+    const url = GET_BREED_RANDOM_IMAGE_API.replace(":breed", selectedBreedType);
+    return dogAPI.get(url);
+  };
 
   const { data, isFetching, remove, refetch } = useQuery({
-    queryKey: `${QUERY_BREED_RANDOM_IMAGE}_${selectedBreed}`,
+    queryKey: `${QUERY_BREED_RANDOM_IMAGE}_${selectedBreedType}`,
     queryFn: fetchBreedImage,
   });
 

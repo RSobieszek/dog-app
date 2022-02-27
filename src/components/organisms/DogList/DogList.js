@@ -11,7 +11,7 @@ import { MAIN_SIZE } from "components/atoms/Loader/helpers";
 function DogList() {
   const {
     breeds,
-    selectedBreed,
+    selectedBreedType,
     selectedBreedName,
     selectBreed,
     isOpen,
@@ -40,7 +40,7 @@ function DogList() {
       </Container>
       {isOpen && (
         <Modal
-          selectedBreed={selectedBreed}
+          selectedBreedType={selectedBreedType}
           selectedBreedName={selectedBreedName}
           toggle={toggle}
         />

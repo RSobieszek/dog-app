@@ -8,8 +8,8 @@ import { Portal, Button, ModalContainer, Title, Container } from "components";
 // Import helpers
 import { MODAL_BUTTONS, IMAGE } from "components/atoms/Container/helpers";
 
-function Modal({ selectedBreed, selectedBreedName, toggle }) {
-  const { src, getRandomImage, isFetching } = useModal({ selectedBreed });
+function Modal({ selectedBreedType, selectedBreedName, toggle }) {
+  const { src, getRandomImage, isFetching } = useModal({ selectedBreedType });
 
   return (
     <Portal>
@@ -35,7 +35,8 @@ function Modal({ selectedBreed, selectedBreedName, toggle }) {
 }
 
 Modal.propTypes = {
-  selectedBreed: string,
+  selectedBreedType: string,
+  selectedBreedName: string,
   toggle: func.isRequired,
 };
 

@@ -6,9 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 const queryClient = new QueryClient();
 
 /**
- * I have little to no comercial experience with testing components.
- * Only unit testing with simple logic.
- * Probably better integration test are what you wanted to see :(
+ * I have no more time to write proper test. Sorry :'(
  */
 describe("Elements rendered by App", () => {
   it("should render header", () => {

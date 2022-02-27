@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useQuery } from "react-query";
 
 // Import utilities
@@ -13,11 +13,11 @@ const useDogList = () => {
   const [isOpen, toggle] = useToggle();
 
   // STATE
-  const [selectedBreed, setSelectedBreed] = useState(null);
+  const [selectedBreedType, setSelectedBreedType] = useState(null);
   const [selectedBreedName, setSelectedBreedName] = useState(null);
 
   // STATE UPDATE
-  const selectBreed = ({ breed, subBreed }) => {
+  const selectBreed = useCallback(({ breed, subBreed }) => {
     let breedType = `${breed}`;
     let breedName = `${breed}`;
 
@@ -26,10 +26,11 @@ const useDogList = () => {
       breedName = `${subBreed} ${breed}`;
     }
 
-    setSelectedBreed(breedType);
+    setSelectedBreedType(breedType);
     setSelectedBreedName(breedName);
     toggle();
-  };
+    // eslint-disable-next-line
+  }, []);
 
   // QUERY (API DATA)
   const fetchDogBreeds = () => dogAPI.get(GET_BREEDS_LIST_API);
@@ -48,7 +49,7 @@ const useDogList = () => {
     breeds,
     isOpen,
     toggle,
-    selectedBreed,
+    selectedBreedType,
     selectBreed,
     selectedBreedName,
     isLoading,

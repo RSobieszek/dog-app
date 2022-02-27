@@ -10,15 +10,16 @@ import { CARD_BUTTONS } from "components/atoms/Container/helpers";
 function CardButtons({ data, selectBreed }) {
   const [breed, subBreeds] = data;
 
+  const handleBreedSelect = () => selectBreed({ breed });
+
   if (subBreeds.length) {
     return (
       <Container modifier={CARD_BUTTONS}>
         {subBreeds.map((subBreed) => {
+          const handleSubBreedSelect = () => selectBreed({ breed, subBreed });
+
           return (
-            <Button
-              key={subBreed}
-              handleClick={() => selectBreed({ breed, subBreed })}
-            >
+            <Button key={subBreed} handleClick={handleSubBreedSelect}>
               {subBreed} {breed}
             </Button>
           );
@@ -29,7 +30,7 @@ function CardButtons({ data, selectBreed }) {
 
   return (
     <Container modifier={CARD_BUTTONS}>
-      <Button handleClick={() => selectBreed({ breed })}>{breed}</Button>
+      <Button handleClick={handleBreedSelect}>{breed}</Button>
     </Container>
   );
 }

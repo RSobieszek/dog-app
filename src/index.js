@@ -9,11 +9,12 @@ import queryClient from "services/react_query_config";
 // Import components
 import App from "./App";
 
-ReactDOM.render(
+const Root = () => (
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
+
+ReactDOM.render(<Root />, document.getElementById("root"));
